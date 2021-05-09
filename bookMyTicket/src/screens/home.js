@@ -10,12 +10,13 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 import MovieIcon from '@material-ui/icons/Movie';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import SearchBar from "material-ui-search-bar";
 import { movies } from '../assets/movieList';
 
+import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -98,13 +99,19 @@ export default function Home() {
                                                         title="Movie Banner"
                                                     />
                                                     <CardActions disableSpacing>
-                                                        <IconButton aria-label="add vote">
+                                                        {/* <IconButton aria-label="add vote">
                                                             <FavoriteIcon />
-                                                        </IconButton>
-                                                        <IconButton aria-label="go to shows">
-                                                            <MovieIcon />
-                                                            {/* Shows */}
-                                                        </IconButton>
+                                                        </IconButton> */}
+                                                        <Link
+                                                            to={`/seat/${movie.id}`}
+                                                            style={{ textDecoration: 'none', color: "grey" }}
+                                                        >
+                                                            <IconButton aria-label="go to shows">
+
+                                                                <MovieIcon />
+                                                            </IconButton>
+                                                        </Link>
+                                                        {/* Shows */}
                                                         <IconButton
                                                             className={clsx(classes.expand, {
                                                                 [classes.expandOpen]: expanded,
@@ -161,13 +168,18 @@ export default function Home() {
                                                         title="Movie Banner"
                                                     />
                                                     <CardActions disableSpacing>
-                                                        <IconButton aria-label="add vote">
+                                                        {/* <IconButton aria-label="add vote">
                                                             <FavoriteIcon />
-                                                        </IconButton>
-                                                        <IconButton aria-label="go to shows">
-                                                            <MovieIcon />
-                                                            {/* Shows */}
-                                                        </IconButton>
+                                                        </IconButton> */}
+                                                        <Link
+                                                            to={`/seat/${movie.id}`}
+                                                            style={{ textDecoration: 'none', color: "grey" }}
+                                                        >
+                                                            <IconButton aria-label="go to shows">
+                                                                <MovieIcon />
+                                                                {/* Shows */}
+                                                            </IconButton>
+                                                        </Link>
                                                         <IconButton
                                                             className={clsx(classes.expand, {
                                                                 [classes.expandOpen]: expanded,
@@ -224,13 +236,18 @@ export default function Home() {
                                                         title="Movie Banner"
                                                     />
                                                     <CardActions disableSpacing>
-                                                        <IconButton aria-label="add vote">
+                                                        {/* <IconButton aria-label="add vote">
                                                             <FavoriteIcon />
-                                                        </IconButton>
-                                                        <IconButton aria-label="go to shows">
-                                                            <MovieIcon />
-                                                            {/* Shows */}
-                                                        </IconButton>
+                                                        </IconButton> */}
+                                                        <Link
+                                                            to={`/seat/${movie.id}`}
+                                                            style={{ textDecoration: 'none', color: "grey" }}
+                                                        >
+                                                            <IconButton aria-label="go to shows">
+                                                                <MovieIcon />
+                                                                {/* Shows */}
+                                                            </IconButton>
+                                                        </Link>
                                                         <IconButton
                                                             className={clsx(classes.expand, {
                                                                 [classes.expandOpen]: expanded,
