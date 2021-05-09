@@ -1,0 +1,58 @@
+export const movies = [
+    {
+        "name": "Sheldon Cooper",
+        "genre": "SciFi | Drama",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "1",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "SciFi | Action",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "2",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Scifi | Drama",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "3",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Action | Drama",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "4",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Action | SciFi",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "5",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Action | Drama",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "6",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Scifi",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "7",
+    },
+    {
+        "name": "Sheldon Cooper",
+        "genre": "Scifi",
+        "description": "The movie is a science fiction revolving around the lifetime of a child prodigy, Sheldon Cooper",
+        "releaseDate": "May 1, 2021",
+        "id": "8",
+    },
+];
