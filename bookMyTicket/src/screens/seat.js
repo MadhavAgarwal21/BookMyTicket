@@ -14,6 +14,8 @@ import { confirmBooking } from '../actions/user.js';
 
 import { movies } from '../assets/movieList.js';
 
+import { Alert } from "react-bootstrap"
+
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -60,6 +62,8 @@ const Seat = ({ match }) => {
   const [seats, setSeats] = React.useState([]);
   const [price, setPrice] = React.useState(0);
 
+  const [error, setError] = React.useState();
+
   const seatHandler = (event) => {
     var index = -1
     const yourSeats = [...seats]
@@ -95,6 +99,12 @@ const Seat = ({ match }) => {
       <br /><br />
       <br /><br />
 
+      {
+        error && <Alert variant="danger">
+          {error}
+          {/* {setError("")} */}
+        </Alert>
+      }
       <div className="d-flex justify-content-center" style={{ width: "90%", marginBottom: "25px" }}>
         <FormControl className={`${classes.formControl} `} style={{ width: "220px" }}>
           <InputLabel id="demo-simple-select-helper-label">Time</InputLabel>
@@ -239,20 +249,28 @@ const Seat = ({ match }) => {
           </table>
           {/* href="/details" */}
           <br />
-          <Button size="small" variant="contained" color="secondary" href="/details" onClick={() => {
-            dispatch(
-              confirmBooking({
-                name,
-                genre,
-                time,
-                cinema,
-                seats,
-                price,
-                id: match.params.id,
-              })
-            )
+          <Button size="small" variant="contained" color="secondary" onClick={() => {
+            if (!cinema || !time || seats.length == 0) {
+              alert("Select a cinema Hall, Time and valid seat Number!")
+              return null
+            }
+            else {
+              dispatch(
+                confirmBooking({
+                  name,
+                  genre,
+                  time,
+                  cinema,
+                  seats,
+                  price,
+                  id: match.params.id,
+                })
+              )
+              window.location.href = "/details"
+            }
           }
-          }>Confirm Selection</Button>
+          }  >Confirm Selection</Button>
+          {/* href={!error ? "/details" : ""}  */}
           <p>Total Price: {price}</p>
         </center>
       </div>

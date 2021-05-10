@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -22,7 +22,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-
+import { useAuth } from "../contexts/AuthContext"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,16 +53,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Home() {
+
     const classes = useStyles();
+
     const [expanded, setExpanded] = React.useState(false);
 
     const [value, setValue] = React.useState('');
+
+    const { getCurrentUsername, isInitialized } = useAuth()
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     let filterMovies = movies;
+
+    if (!isInitialized()) {
+        // not logged in
+        alert('Please login first')
+        window.location.href = '/login'
+        return null
+    }
 
     return (
         <>
@@ -141,7 +152,7 @@ export default function Home() {
                             </>
                         ) : (
                             <>
-                                Stay Home! Stay Safe.
+                                Sorry, no movies to show !
                             </>
                         )
                     }
@@ -209,7 +220,7 @@ export default function Home() {
                             </>
                         ) : (
                             <>
-                                Stay Home! Stay Safe.
+                                Sorry, no movies to show !
                             </>
                         )
                     }
@@ -277,7 +288,7 @@ export default function Home() {
                             </>
                         ) : (
                             <>
-                                Stay Home! Stay Safe.
+                                Sorry, no movies to show !
                             </>
                         )
                     }
@@ -285,4 +296,5 @@ export default function Home() {
             </Container>
         </>
     );
+
 }

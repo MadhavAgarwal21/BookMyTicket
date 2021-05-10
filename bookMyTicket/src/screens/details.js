@@ -7,11 +7,22 @@ import { cancelBooking } from '../actions/user';
 
 import { Link } from 'react-router-dom';
 
+import { useAuth } from "../contexts/AuthContext"
+
 export default function Profile() {
 
   const { bookingHistory } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+
+  const { isInitialized } = useAuth()
+
+  if (!isInitialized()) {
+    // not logged in
+    alert('Please login first')
+    window.location.href = '/login'
+    return null
+  }
 
   return (
     <>
@@ -53,6 +64,7 @@ export default function Profile() {
                       </p>
                       <Button variant="danger" onClick={
                         () => {
+                          alert("All bookings of this movie will be removed")
                           dispatch(cancelBooking({
                             id: show.id,
                           })

@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -12,7 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useAuth } from "../contexts/AuthContext"
+
+import { Alert } from "react-bootstrap"
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -36,7 +36,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
     const classes = useStyles();
-    const dispatch = useDispatch();
+
+    const [email, setEmail] = React.useState()
+    const [password, setPassword] = React.useState()
+
+    const { login } = useAuth()
+
+    const [error, setError] = useState("")
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        try {
+            setPassword("")
+            setEmail("")
+            setError("")
+
+            await login(email, password)
+            window.location.href = '/'
+
+        } catch (error) {
+            setError(error.message)
+        }
+    };
 
     return (
         <Container component="main" maxWidth="xs">
@@ -48,7 +70,8 @@ export default function Login() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <form className={classes.form} noValidate >
                     <TextField
                         margin="normal"
                         required
@@ -58,6 +81,8 @@ export default function Login() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <TextField
                         margin="normal"
@@ -68,10 +93,8 @@ export default function Login() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button
                         type="submit"
@@ -79,6 +102,7 @@ export default function Login() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleSubmit}
                     >
                         Sign In
                     </Button>
