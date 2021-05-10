@@ -3,12 +3,12 @@ import "firebase/auth"
 import 'firebase/firebase-firestore'
 
 const app = firebase.initializeApp({
-	apiKey: "AIzaSyAMD0TsGoknUXL71PRwM4DqWFqwj2SoKzE",
+	apiKey: "**",
     authDomain: "book-myticket.firebaseapp.com",
     projectId: "book-myticket",
     storageBucket: "book-myticket.appspot.com",
-    messagingSenderId: "1062966141475",
-    appId: "1:1062966141475:web:20aafba825ee549067c796"
+    messagingSenderId: "**",
+    appId: "**"
 })
 
 export const auth = app.auth()
